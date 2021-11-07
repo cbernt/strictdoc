@@ -1,7 +1,7 @@
 from xml.etree import ElementTree as etree
 
 import pytest
-from strictdoc.imports.reqif.models.spec_object_parser import (
+from strictdoc.imports.reqif.parsers.spec_object_parser import (
     SpecObjectParser,
 )
 

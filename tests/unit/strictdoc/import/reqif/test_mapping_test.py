@@ -3,7 +3,7 @@ from xml.etree import ElementTree as etree
 import pytest
 
 from strictdoc.backend.dsl.models.reference import Reference
-from strictdoc.imports.reqif.models.spec_object_parser import (
+from strictdoc.imports.reqif.parsers.spec_object_parser import (
     SpecObjectParser,
 )
 

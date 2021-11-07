@@ -11,15 +11,16 @@ from strictdoc.backend.dsl.models.document import Document
 from strictdoc.backend.dsl.models.document_config import DocumentConfig
 from strictdoc.backend.dsl.writer import SDWriter
 from strictdoc.cli.cli_arg_parser import ImportCommandConfig
-from strictdoc.imports.reqif.models.spec_type_parser import SpectypeParser
-from strictdoc.imports.reqif.models.spec_relation_parser import (
+from strictdoc.imports.reqif.models.reqif_spec_object_type import ReqIFSpecObjectType
+from strictdoc.imports.reqif.parsers.spec_type_parser import SpecTypeParser
+from strictdoc.imports.reqif.parsers.spec_relation_parser import (
     SpecRelationParser,
 )
-from strictdoc.imports.reqif.models.spec_hierarchy_parser import (
+from strictdoc.imports.reqif.parsers.spec_hierarchy_parser import (
     SpecHierarchyParser,
 )
 
-from strictdoc.imports.reqif.models.spec_object_parser import (
+from strictdoc.imports.reqif.parsers.spec_object_parser import (
     SpecObjectParser,
 )
 
@@ -141,6 +142,7 @@ class ReqIFImport:
             "SDOC:SPEC-TYPES", namespace_dict
         )
         assert element_spec_types
+        print(list(element_spec_types))
 
         # spec-objects contains specobjects, which are the actual requirements.
         # every specobject must have a spectype which defines its structure
@@ -174,10 +176,10 @@ class ReqIFImport:
         # parse spectypes, create a map storing relevant data for each spectype
         parsed_spectypes = {}
         for spectype in list(element_spec_types):
-            type_id, type_name, type_map = SpectypeParser.parse(spectype)
-            if type_id is not None:
-                type_data = [type_name, type_map]
-                parsed_spectypes[type_id] = type_data
+            spec_type = SpecTypeParser.parse(spectype)
+            if isinstance(spec_type, ReqIFSpecObjectType):
+                type_data = [spec_type.long_name, spec_type.attribute_map]
+                parsed_spectypes[spec_type.identifier] = type_data
 
         # get links between requirements:
         structure_map = defaultdict(list)

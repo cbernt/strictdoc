@@ -2,7 +2,7 @@ from xml.etree import ElementTree as etree
 
 from strictdoc.backend.dsl.models.requirement import Requirement
 from strictdoc.backend.dsl.models.special_field import SpecialField
-from strictdoc.imports.reqif.models.spec_object_parser import (
+from strictdoc.imports.reqif.parsers.spec_object_parser import (
     SpecObjectParser,
 )
 
