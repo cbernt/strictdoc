@@ -53,7 +53,7 @@ def _main(parallelizer):
 
     elif parser.is_import_command:
         import_config = parser.get_import_config(STRICTDOC_ROOT_PATH)
-        ReqIFImport.import_from_file(import_config.input_path)
+        ReqIFImport.import_from_file(import_config)
 
     else:
         raise NotImplementedError

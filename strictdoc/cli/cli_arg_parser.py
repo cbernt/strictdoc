@@ -86,7 +86,7 @@ def cli_args_parser() -> argparse.ArgumentParser:
     command_parser_export.add_argument(
         "--enable-mathjax",
         action="store_true",
-        help=("Enables Mathjax support (only HTML export)."),
+        help="Enables Mathjax support (only HTML export).",
     )
     command_parser_export.add_argument(
         "--experimental-enable-file-traceability",
@@ -103,12 +103,17 @@ def cli_args_parser() -> argparse.ArgumentParser:
         "import",
         help="Import document tree.",
         parents=[],
-        description=("TODO" "TODO"),
+        description="TODO",
     )
     command_parser_export.add_argument(
         "input_path",
         type=str,
-        help="One or more folders with *.sdoc files",
+        help="TODO",
+    )
+    command_parser_export.add_argument(
+        "output_path",
+        type=str,
+        help="TODO",
     )
 
     # Command: Passthrough
@@ -127,8 +132,9 @@ def cli_args_parser() -> argparse.ArgumentParser:
 
 
 class ImportCommandConfig:
-    def __init__(self, input_path):
+    def __init__(self, input_path, output_path):
         self.input_path = input_path
+        self.output_path = output_path
 
 
 class PassthroughCommandConfig:
@@ -203,7 +209,7 @@ class SDocArgsParser:
         )
 
     def get_import_config(self, strictdoc_root_path) -> ImportCommandConfig:
-        return ImportCommandConfig(self.args.input_path)
+        return ImportCommandConfig(self.args.input_path, self.args.output_path)
 
 
 def create_sdoc_args_parser(testing_args=None) -> SDocArgsParser:

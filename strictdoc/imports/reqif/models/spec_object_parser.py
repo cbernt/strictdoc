@@ -43,7 +43,7 @@ class SpecObjectParser:
             len(identifier_list) != identifier_counter
             or len(attribute_map) != identifier_counter
         ):
-            raise ValueError("SpecObject_identifiers_not_congruent")
+            raise ValueError("SpecObject: identifiers are not congruent.")
 
         # dict with attribute names and corresponding identifiers
         value_number = 0
@@ -54,9 +54,9 @@ class SpecObjectParser:
             ]
             value_number += 1
 
-        # check if asil values are correct
-        if element_type == "functional" or element_type == "technical":
-            SpecObjectParser.checkasilvalues(dict_attribute_value)
+        # check if ASIL values are correct
+        # if element_type == "functional" or element_type == "technical":
+        #     SpecObjectParser.checkasilvalues(dict_attribute_value)
 
         # check for missing attribute values in predefined spectypes
         if element_type == "test":
