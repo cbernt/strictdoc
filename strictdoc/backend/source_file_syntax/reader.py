@@ -207,6 +207,7 @@ def range_start_pragma_processor(
             raise create_end_without_begin_error(location)
     else:
         raise NotImplementedError
+    print(f"FOUND PRAGMA: {pragma}")
 
 
 class SourceFileTraceabilityReader:

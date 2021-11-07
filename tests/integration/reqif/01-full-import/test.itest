@@ -1,0 +1,4 @@
+RUN: %strictdoc import %S/mapping_testfile.reqif %S/output.sdoc
+
+RUN: diff %S/mapping_testfile.sdoc %S/output.sdoc -s | filecheck %s --dump-input=fail --check-prefix=CHECK-FIRST
+CHECK-FIRST: identical

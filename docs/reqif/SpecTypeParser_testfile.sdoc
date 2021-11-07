@@ -1,0 +1,209 @@
+[DOCUMENT]
+TITLE: SpecTypeParser Requirements
+SPECIAL_FIELDS:
+- NAME: ALLOCATION
+  TYPE: String
+- NAME: ASIL
+  TYPE: String
+- NAME: TARGET_VALUE
+  TYPE: String
+- NAME: ALLOCATION_TO_COMPONENT
+  TYPE: String
+- NAME: TYPE
+  TYPE: String
+- NAME: INITIAL_CONDITION
+  TYPE: String
+- NAME: TEST_SEQUENCE
+  TYPE: String
+
+[FREETEXT]
+Defining the Requirements for the SpecTypeParser
+[/FREETEXT]
+
+[SECTION]
+TITLE: Mapping technical requirements
+
+[REQUIREMENT]
+UID: HLR401
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: The SpecTypeParser shall parse an Etree Element (SpecType) and return the data necessary for parsing of this type of SpecObjects. (String SpecType_ID, String Type, Map (String Attribute Name -> String Attribute ID))
+
+[REQUIREMENT]
+UID: HLR401-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object
+  TEST_SEQUENCE: The Element is parsed by the Parser and returns the relevant values. The returned SpecType ID, Type and map are compared to the correct values.
+  TARGET_VALUE: known SpecType ID from the xml object
+REFS:
+- TYPE: Parent
+  VALUE: HLR401
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a correct SpecObject returns all correct Values.
+
+[REQUIREMENT]
+UID: LLR401
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: UID
+REFS:
+- TYPE: Parent
+  VALUE: HLR401
+STATEMENT: The SpecTypeParser shall parse an Etree Element (SpecType) and return the ID. If the ID is missing or malformed, an Error shall be raised.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR401-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object
+  TEST_SEQUENCE: The Element is parsed by the Parser and returns the relevant values. The returned SpecType ID is compared to the known value.
+  TARGET_VALUE: known SpecType ID from the xml object
+REFS:
+- TYPE: Parent
+  VALUE: LLR401
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a correct SpecObject returns the correct ID.
+
+[REQUIREMENT]
+UID: LLR401-T002
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object without an ID
+  TEST_SEQUENCE: The Element containing no ID is parsed by the Parser. The returned Exception is verified.
+  TARGET_VALUE: ValueError("id_missing")
+REFS:
+- TYPE: Parent
+  VALUE: LLR401
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a SpecObject without an ID raises a ValueError("id_missing").
+
+[REQUIREMENT]
+UID: LLR401-T003
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object with a malformed ID
+  TEST_SEQUENCE: The Element containing a malformed ID is parsed by the Parser. The returned Exception is verified.
+  TARGET_VALUE: ValueError("id_malformed")
+REFS:
+- TYPE: Parent
+  VALUE: LLR401
+- TYPE: File
+  VALUE: tests/unit/strictdoc/import/reqif/test_spec_type_parser.py
+STATEMENT: Test that parsing a SpecObject with a malformed ID raises a ValueError("id_malformed").
+
+[REQUIREMENT]
+UID: LLR402
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: UID
+REFS:
+- TYPE: Parent
+  VALUE: HLR401
+STATEMENT: The SpecTypeParser shall parse an Etree Element (SpecTypes) and return the type.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR402-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object
+  TEST_SEQUENCE: The Element is parsed by the Parser and returns the relevant values. The returned type is compared to the known value.
+  TARGET_VALUE: known type from the xml object
+REFS:
+- TYPE: Parent
+  VALUE: LLR402
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a correct SpecObject returns the correct type.
+
+[REQUIREMENT]
+UID: LLR402-T002
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object without a type
+  TEST_SEQUENCE: The Element containing no type is parsed by the Parser. The returned Exception is verified.
+  TARGET_VALUE: ValueError("type_missing")
+REFS:
+- TYPE: Parent
+  VALUE: LLR402
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a SpecObject without a type raises a ValueError("type_missing").
+
+[REQUIREMENT]
+UID: LLR402-T003
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object with a malformed type.
+  TEST_SEQUENCE: The Element containing a malformed type is parsed by the Parser. The returned Exception is verified.
+  TARGET_VALUE: ValueError("type_malformed")
+REFS:
+- TYPE: Parent
+  VALUE: LLR402
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a SpecObject with a malformed type raises a ValueError("id_malformed").
+
+[REQUIREMENT]
+UID: LLR403
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: UID
+REFS:
+- TYPE: Parent
+  VALUE: HLR401
+STATEMENT: The SpecTypeParser shall parse an Etree Element (SpecTypes) and return the attribube Map.
+
+[REQUIREMENT]
+UID: LLR403-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object
+  TEST_SEQUENCE: The Element is parsed by the Parser and returns the relevant values. The returned attribute map is compared to the known value.
+  TARGET_VALUE: known map from the xml object
+REFS:
+- TYPE: Parent
+  VALUE: LLR403
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a correct SpecObject returns the correct map.
+
+[REQUIREMENT]
+UID: LLR403-T002
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An Etree Element containing a SPEC-OBJECT-TYPE xml object with a malformed Attribute
+  TEST_SEQUENCE: The Element containing a malformed attribute is parsed by the Parser. The returned Exception is verified.
+  TARGET_VALUE: ValueError("attribute_malformed")
+REFS:
+- TYPE: Parent
+  VALUE: LLR403
+- TYPE: File
+  VALUE: tests\unit\strictdoc\import\reqif\test_spectypeparser.py
+- TYPE: File
+  VALUE: test_spectypeparser.py
+STATEMENT: Test that parsing a SpecObject with a malformed attribute raises a ValueError("attribute_malformed").
+
+[/SECTION]
