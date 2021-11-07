@@ -1,4 +1,5 @@
 import re
+import sys
 from collections import defaultdict
 from io import StringIO
 from xml.etree import ElementTree as etree
@@ -54,9 +55,10 @@ class ReqIFImport:
             content = file.read()
         try:
             parsed_xml = etree.parse(StringIO(content), etree.XMLParser())
-        except Exception:
+        except Exception as exception:
             # TODO: handle
-            pass
+            print(f"error: problem parsing file: {exception}")
+            sys.exit(1)
 
         # ReqIF element naming convention: element_xyz where xyz is the name of
         # the reqif(xml) tag. Dashes are turned into underscores.
@@ -78,7 +80,7 @@ class ReqIFImport:
         # TODO: The header, containing metadata about the document.
         # element_the_header = element_req_if.find("THE-HEADER", namespace_dict)
 
-        # core content, contains req-if-content which contains all the actual
+        # Core content, contains req-if-content which contains all the actual
         # content.
         element_core_content = element_req_if.find(
             "CORE-CONTENT", namespace_dict

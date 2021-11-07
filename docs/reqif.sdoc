@@ -4,4 +4,59 @@ TITLE: StrictDoc/ReqIF
 [SECTION]
 TITLE: Introduction
 
+[FREETEXT]
+.. code-block:: text
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <REQ-IF xmlns="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd" xmlns:configuration="http://eclipse.org/rmf/pror/toolextensions/1.0">
+      <THE-HEADER>
+        <REQ-IF-HEADER IDENTIFIER="_Z5pggSzGEey_QIvU1w5Ozg">
+
+.. code-block:: yaml
+
+    REQ-IF:
+      THE-HEADER:
+        REQ-IF-HEADER:
+          COMMENT:
+          CREATION-TIME:
+          REQ-IF-TOOL:
+          REQ-IF-VERSION:
+          SOURCE-TOOL-ID:
+          TITLE:
+          _IDENTIFIER:
+      CORE-CONTENT:
+        REQ-IF-CONTENT:
+          DATATYPES:
+            - DATATYPE-DEFINITION-STRING: (string type description, contains ID, long name, length, and last change)
+          SPEC-TYPES:
+            SPEC-OBJECT-TYPE:
+              - SPEC-ATTRIBUTES:
+                  ATTRIBUTE-DEFINITION-STRING:
+                    - TYPE:
+                        DATATYPE-DEFINITION-STRING-REF: (pointer to the type defined in DATATYPES)
+                      _IDENTIFIER:
+                      _LONG-NAME: requirement_ID
+                      _LAST-CHANGE:
+                _IDENTIFIER:
+                _LONG-NAME: technical
+                _LAST-CHANGE:
+            SPEC-RELATION-TYPE:
+              _IDENTIFIER: ...
+              -LONG-NAME: SpecRelation Type
+          SPEC-OBJECTS:
+            - VALUES:
+                ATTRIBUTE-VALUE-STRING:
+                  - DEFINITION:
+                      ATTRIBUTE-DEFINITION-STRING-REF: ...
+                    _THE-VALUE: SR001
+              TYPE:
+                SPEC-OBJECT-REF-TYPE: (Example: Functional)
+              _IDENTIFIER:
+              _LAST-CHANGE:
+          SPEC-RELATIONS:
+          SPECIFICATIONS:
+      TOOL-EXTENSIONS:
+
+[/FREETEXT]
+
 [/SECTION]
