@@ -1,0 +1,396 @@
+[DOCUMENT]
+TITLE: SDoc Requirements
+SPECIAL_FIELDS:
+- NAME: ALLOCATION
+  TYPE: String
+- NAME: ASIL
+  TYPE: String
+- NAME: TARGET_VALUE
+  TYPE: String
+- NAME: ALLOCATION_TO_COMPONENT
+  TYPE: String
+- NAME: TYPE
+  TYPE: String
+- NAME: INITIAL_CONDITION
+  TYPE: String
+- NAME: TEST_SEQUENCE
+  TYPE: String
+
+[FREETEXT]
+Defining the technical tests for mapping from ReqIf files to SDOC
+[/FREETEXT]
+
+[SECTION]
+TITLE: Mapping technical requirements
+
+[REQUIREMENT]
+UID: HLR101
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+REFS:
+- TYPE: Parent
+  VALUE: HLR010
+STATEMENT: The SpecObjectParser shall map technical requirements.
+
+[REQUIREMENT]
+UID: HLR101-T001
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: The etree element is passed into the SpecObjectParser function.
+  TEST_SEQUENCE: The technical requirement shall be passed into the function as an etree element and the function returns a Requirement Object which is compared to a predefined Requirement Object.
+  TARGET_VALUE: The predefined Requirement Object.
+REFS:
+- TYPE: Parent
+  VALUE: HLR101
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the etree element to a Requirement Object.
+
+[REQUIREMENT]
+UID: LLR101
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: UID
+REFS:
+- TYPE: Parent
+  VALUE: HLR101
+STATEMENT: The mapping function shall map requirement_ID to UID.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR101-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF requirement_ID is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the requirement_ID shall be passed into the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR101
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute requirement_ID to the SDOC attribute UID.
+
+[REQUIREMENT]
+UID: LLR101-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF requirement_ID is passed into the mapping function.
+  TEST_SEQUENCE: The malformed requirement_ID shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR101
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute requirement_ID to the SDoC attribute UID.
+
+[REQUIREMENT]
+UID: LLR101-T003
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF requirement_ID is passed into the mapping function.
+  TEST_SEQUENCE: The empty value for the requirement_ID shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR101
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the missing ReqIF attribute requirement_ID to the SDoC attribute UID.
+
+[REQUIREMENT]
+UID: LLR102
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: TITLE
+REFS:
+- TYPE: Parent
+  VALUE: HLR101
+STATEMENT: The mapping function shall map functional_description to TITLE.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR102-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF functional_description is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the functional_description shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR102
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute functional_description to the SDoC attribute TITLE.
+
+[REQUIREMENT]
+UID: LLR102-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF functional_description is passed into the mapping function.
+  TEST_SEQUENCE: The malformed functional_description shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR102
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute functional_description to the SDoC attribute TITLE.
+
+[REQUIREMENT]
+UID: LLR102-T003
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF functional_description is passed into the mapping function.
+  TEST_SEQUENCE: The empty value for the functional_description shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR102
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the missing ReqIF attribute functional_description to the SDoC attribute TITLE.
+
+[REQUIREMENT]
+UID: LLR103
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: SPECIAL FIELD(ALLOCATION_TO_COMPONENT)
+REFS:
+- TYPE: Parent
+  VALUE: HLR001
+STATEMENT: The mapping function shall map allocation_to_component to SPECIAL FIELD(allocation_to_component).
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR103-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF allocation_to_component is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the allocation_to_component shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR103
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute allocation_to_component to the SDoC attribute SPECIAL FIELD(allocation_to_component).
+
+[REQUIREMENT]
+UID: LLR103-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF allocation_to_component is passed into the mapping function.
+  TEST_SEQUENCE: The malformed allocation_to_component shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR103
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute allocation_to_component to the SDoC attribute SPECIAL FIELD(allocation_to_component).
+
+[REQUIREMENT]
+UID: LLR104
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: SPECIAL FIELD(asil)
+REFS:
+- TYPE: Parent
+  VALUE: HLR001
+STATEMENT: The mapping function shall map asil to SPECIAL FIELD(asil).
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR104-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF asil is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the asil shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR104
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute asil to the SDoC attribute SPECIAL FIELD(asil).
+
+[REQUIREMENT]
+UID: LLR104-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF asil is passed into the mapping function.
+  TEST_SEQUENCE: The malformed asil shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR104
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute asil to the SDoC attribute SPECIAL FIELD(asil).
+
+[REQUIREMENT]
+UID: LLR105
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION_TO_COMPONENT: Software
+  ASIL: none
+  TARGET_VALUE: STATUS
+REFS:
+- TYPE: Parent
+  VALUE: HLR001
+STATEMENT: The mapping function shall map status to STATUS.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR105-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF status is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the status shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR105
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute status to the SDoC attribute STATUS.
+
+[REQUIREMENT]
+UID: LLR105-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF status is passed into the mapping function.
+  TEST_SEQUENCE: The malformed status shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR105
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute status to the SDoC attribute STATUS.
+
+[REQUIREMENT]
+UID: LLR106
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+  TARGET_VALUE: SPECIAL FIELD(target_value)
+REFS:
+- TYPE: Parent
+  VALUE: HLR201
+STATEMENT: The mapping function shall map target_value to SPECIAL FIELD(target_value).
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR106-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF target_value is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the target_value shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR106
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute target_value to the SDoC attribute SPECIAL FIELD(target_value).
+
+[REQUIREMENT]
+UID: LLR106-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF target_value is passed into the mapping function.
+  TEST_SEQUENCE: The malformed target_value shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR106
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute target_value to the SDoC attribute SPECIAL FIELD(target_value).
+
+[REQUIREMENT]
+UID: LLR107
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+  TARGET_VALUE: COMMENT
+REFS:
+- TYPE: Parent
+  VALUE: HLR201
+STATEMENT: The mapping function shall map comment to COMMENT.
+COMMENT: >>>
+no comment
+<<<
+
+[REQUIREMENT]
+UID: LLR107-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF comment is passed into the mapping function.
+  TEST_SEQUENCE: The correct value for the comment shall be passed to the function and the function returns the same value as result and compares it to the predefined test value.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR107
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the ReqIF attribute comment to the SDoC attribute COMMENT.
+
+[REQUIREMENT]
+UID: LLR107-T002
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: ReqIF comment is passed into the mapping function.
+  TEST_SEQUENCE: The malformed comment shall be passed to the function and the function raises an ecxeption.
+  TARGET_VALUE: true
+REFS:
+- TYPE: Parent
+  VALUE: LLR107
+- TYPE: File
+  VALUE: ..\..\..\tests\unit\strictdoc\import\reqif
+STATEMENT: The test function shall test the mapping of the malformed ReqIF attribute comment to the SDoC attribute COMMENT.
+
+[/SECTION]

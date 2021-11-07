@@ -41,6 +41,7 @@ def cli_args_parser() -> argparse.ArgumentParser:
     )
     command_subparsers.required = True
 
+    # Command: Export
     command_parser_export = command_subparsers.add_parser(
         "export",
         help="Export document tree.",
@@ -97,6 +98,20 @@ def cli_args_parser() -> argparse.ArgumentParser:
         ),
     )
 
+    # Command: Import
+    command_parser_export = command_subparsers.add_parser(
+        "import",
+        help="Import document tree.",
+        parents=[],
+        description=("TODO" "TODO"),
+    )
+    command_parser_export.add_argument(
+        "input_path",
+        type=str,
+        help="One or more folders with *.sdoc files",
+    )
+
+    # Command: Passthrough
     command_parser_passthrough = command_subparsers.add_parser(
         "passthrough", help="Export document tree.", parents=[]
     )
@@ -109,6 +124,11 @@ def cli_args_parser() -> argparse.ArgumentParser:
     )
 
     return main_parser
+
+
+class ImportCommandConfig:
+    def __init__(self, input_path):
+        self.input_path = input_path
 
 
 class PassthroughCommandConfig:
@@ -151,14 +171,18 @@ class SDocArgsParser:
     def is_passthrough_command(self):
         return self.args.command == "passthrough"
 
+    @property
+    def is_export_command(self):
+        return self.args.command == "export"
+
+    @property
+    def is_import_command(self):
+        return self.args.command == "import"
+
     def get_passthrough_config(self) -> PassthroughCommandConfig:
         return PassthroughCommandConfig(
             self.args.input_file, self.args.output_file
         )
-
-    @property
-    def is_export_command(self):
-        return self.args.command == "export"
 
     def get_export_config(self, strictdoc_root_path) -> ExportCommandConfig:
         project_title = (
@@ -177,6 +201,9 @@ class SDocArgsParser:
             self.args.enable_mathjax,
             self.args.experimental_enable_file_traceability,
         )
+
+    def get_import_config(self, strictdoc_root_path) -> ImportCommandConfig:
+        return ImportCommandConfig(self.args.input_path)
 
 
 def create_sdoc_args_parser(testing_args=None) -> SDocArgsParser:

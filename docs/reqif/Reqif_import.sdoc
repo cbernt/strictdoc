@@ -1,0 +1,71 @@
+[DOCUMENT]
+TITLE: SDoc Requirements
+SPECIAL_FIELDS:
+- NAME: ALLOCATION
+  TYPE: String
+- NAME: ASIL
+  TYPE: String
+- NAME: TARGET_VALUE
+  TYPE: String
+- NAME: ALLOCATION_TO_COMPONENT
+  TYPE: String
+- NAME: TYPE
+  TYPE: String
+- NAME: INITIAL_CONDITION
+  TYPE: String
+- NAME: TEST_SEQUENCE
+  TYPE: String
+
+[FREETEXT]
+Defining the technical tests for mapping from ReqIf files to SDOC
+[/FREETEXT]
+
+[SECTION]
+TITLE: Mapping functional requirements
+
+[REQUIREMENT]
+UID: SR001
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+STATEMENT: The import function shall import a .reqif file and convert it to an .sdoc file.
+
+[REQUIREMENT]
+UID: SR001-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: A .Reqif file containing requirements and a .sdoc file containing the same requirements.
+  TEST_SEQUENCE: The .reqif file shall be imported and the resulting .sdoc file compared the the known .sdoc file.
+  TARGET_VALUE: Known, pre-converted .sdoc file
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+STATEMENT: Test that importing a full .reqif file results in the correct .sdoc file.
+
+[REQUIREMENT]
+UID: HLR010
+STATUS: Draft
+SPECIAL_FIELDS:
+  ALLOCATION: Software
+  ASIL: none
+REFS:
+- TYPE: Parent
+  VALUE: SR001
+STATEMENT: The SpecObjectParser shall convert all SpecObject to the appropriate SDoc Requirement Object.
+
+[REQUIREMENT]
+UID: HLR010-T001
+STATUS: Draft
+SPECIAL_FIELDS:
+  TYPE: Software
+  INITIAL_CONDITION: An etree element and predefined Requirement Object containing the same requirement.
+  TEST_SEQUENCE: The requirement shall be passed into the function as an etree element and the function returns a Requirement Object which is compared to a predefined Requirement Object.
+  TARGET_VALUE: The predefined Requirement Object.
+REFS:
+- TYPE: Parent
+  VALUE: HLR010
+STATEMENT: The test function shall test that all Specobjects are converted to appropriate Requirement Objects.
+
+[/SECTION]

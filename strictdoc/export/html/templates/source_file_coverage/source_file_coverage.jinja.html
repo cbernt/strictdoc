@@ -67,29 +67,38 @@
               </div>
 
               <div class="std-tree_aside">
-               {%- set general_reqs, range_reqs = traceability_index.get_source_file_reqs(source_file.in_doctree_source_file_rel_path) -%}
-                {%- if range_reqs -%}
-                  {%- set coverage_info = traceability_index.get_coverage_info(source_file.in_doctree_source_file_rel_path) -%}
-                  <div class="value-bar">
-                    <span class="value-bar_bar" data-value={{ coverage_info.get_coverage() }}>
-                      <span class="value-bar_filler" style="width:{{ coverage_info.get_coverage() }}%"></span>
-                    </span>
-                    <span class="value-bar_text">{{ coverage_info.get_coverage() }}%</span>
-                  </div>
-                {%- elif general_reqs -%}
-                  <div class="value-bar">
-                    <span class="value-bar_bar" data-value>
-                      <span class="value-bar_filler"></span>
-                    </span>
-                    <span class="value-bar_text"></span>
-                  </div>
+                {%- if source_file.is_referenced -%}
+                {%- set general_reqs, range_reqs = traceability_index.get_source_file_reqs(source_file.in_doctree_source_file_rel_path) -%}
+                  {%- if range_reqs -%}
+                    {%- set coverage_info = traceability_index.get_coverage_info(source_file.in_doctree_source_file_rel_path) -%}
+                    <div class="value-bar">
+                      <span class="value-bar_bar" data-value={{ coverage_info.get_coverage() }}>
+                        <span class="value-bar_filler" style="width:{{ coverage_info.get_coverage() }}%"></span>
+                      </span>
+                      <span class="value-bar_text">{{ coverage_info.get_coverage() }}%</span>
+                    </div>
+                  {%- elif general_reqs -%}
+                    <div class="value-bar">
+                      <span class="value-bar_bar" data-value>
+                        <span class="value-bar_filler"></span>
+                      </span>
+                      <span class="value-bar_text"></span>
+                    </div>
+                  {%- else -%}
+                    <div class="value-bar">
+                      <span class="value-bar_bar">
+                        <span class="value-bar_filler"></span>
+                      </span>
+                      <span class="value-bar_text"></span>
+                    </div>
+                  {%- endif -%}
                 {%- else -%}
-                  <div class="value-bar">
-                    <span class="value-bar_bar">
-                      <span class="value-bar_filler"></span>
-                    </span>
-                    <span class="value-bar_text"></span>
-                  </div>
+                   <div class="value-bar">
+                      <span class="value-bar_bar">
+                        <span class="value-bar_filler"></span>
+                      </span>
+                      <span class="value-bar_text"></span>
+                    </div>
                 {%- endif -%}
               </div>
             {% endif %}
