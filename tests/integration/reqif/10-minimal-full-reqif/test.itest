@@ -1,0 +1,3 @@
+RUN: %strictdoc import %S/sample.reqif %S/output/output.sdoc
+
+UN: diff %S/expected/output.sdoc %S/output/output.sdoc
