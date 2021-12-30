@@ -167,7 +167,7 @@ class SDocToReqIFObjectConverter:
             )
             current_hierarchy = root_hierarchy
             for node in document_iterator.all_content():
-                if node.is_section:
+                if node.is_section or node.is_composite_requirement:
                     title_attribute = SpecObjectAttribute(
                         attribute_type=SpecObjectAttributeType.STRING,
                         name="TITLE",
@@ -186,7 +186,7 @@ class SDocToReqIFObjectConverter:
                     )
                     spec_objects.append(spec_object)
                     hierarchy = ReqIFSpecHierarchy(
-                        identifier="foo",
+                        identifier=node.title,
                         last_change=None,
                         long_name=None,
                         spec_object=spec_object.identifier,
@@ -209,14 +209,18 @@ class SDocToReqIFObjectConverter:
                         current_hierarchy_parent.add_child(hierarchy)
                         parents[hierarchy] = current_hierarchy_parent
                     current_hierarchy = hierarchy
-
                 elif node.is_requirement:
+                    for _ in range(
+                        0, (current_hierarchy.level - node.ng_level + 1)
+                    ):
+                        current_hierarchy = parents[current_hierarchy]
+
                     spec_object = cls._convert_requirement_to_spec_object(
                         requirement=node, grammar=document.grammar
                     )
                     spec_objects.append(spec_object)
                     hierarchy = ReqIFSpecHierarchy(
-                        identifier="foo",
+                        identifier=node.title,
                         last_change=None,
                         long_name=None,
                         spec_object=spec_object.identifier,
@@ -224,6 +228,7 @@ class SDocToReqIFObjectConverter:
                         ref_then_children_order=True,
                         level=node.ng_level,
                     )
+                    print(node)
                     parents[hierarchy] = current_hierarchy
                     current_hierarchy.add_child(hierarchy)
             specification = ReqIFSpecification(
