@@ -1,0 +1,962 @@
+[DOCUMENT]
+TITLE: Requirements Document
+OPTIONS:
+  MARKUP: HTML
+
+[GRAMMAR]
+ELEMENTS:
+- TAG: REQUIREMENT
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+
+[SECTION]
+TITLE:                 <xhtml:div>Features</xhtml:div>
+
+[REQUIREMENT]
+UID: REQ-2
+STATEMENT: >>>
+<xhtml:div>Direct remote identification</xhtml:div>
+<<<
+COMMENT: >>>
+
+<<<
+
+[REQUIREMENT]
+UID: REQ-3
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Geo-awareness system</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+
+<<<
+
+[REQUIREMENT]
+UID: REQ-134
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Notify pilot on HMI if distance to restricted area is &lt; 1000ft (~300m)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+
+<<<
+
+[REQUIREMENT]
+UID: REQ-5
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Geo-caging system <xhtml:i>(only when pilot is in the loop)</xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-135
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Prevent pilot from leaving its flight envelope&#160;<xhtml:span style="text-decoration: underline;">(see Definition of an Operational Volume)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-6
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Data link recovery</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-7
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">System monitoring (optional)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-8
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Fuel Status</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-9
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Signal strength (C3-Link-Monitor)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-11
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">C2-Link "Command &amp; Control"</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-40
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Delay <xhtml:span style="text-decoration: underline;">&lt;= 5s</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Assumed with reference to DAA (TMPR BVLOS)
+<<<
+
+[REQUIREMENT]
+UID: REQ-42
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic; font-family: Calibri; vertical-align: baseline;">Function</xhtml:span><xhtml:span style="font-style: italic;">&#160;</xhtml:span><xhtml:span style="font-style: italic; font-family: Calibri; vertical-align: baseline;">loss</xhtml:span><xhtml:span style="font-style: italic;">&#160;</xhtml:span><xhtml:span style="font-style: italic; font-family: Calibri; vertical-align: baseline;">probability</xhtml:span><xhtml:span style="font-style: italic; font-family: Calibri; vertical-align: baseline;">: &lt;=</xhtml:span><xhtml:span style="font-style: italic;">&#160;</xhtml:span><xhtml:span style="font-style: italic; font-family: Calibri;"><xhtml:span style="text-decoration: underline;">1E-2 Losses/Hour</xhtml:span></xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Assumed with reference to DAA (TMPR BVLOS)
+<<<
+
+[REQUIREMENT]
+UID: REQ-43
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">System Risk Ratio&#160;</xhtml:span><xhtml:span style="text-decoration: underline;"><xhtml:i>&lt;= 0,66</xhtml:i></xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Assumed with reference to DAA (TMPR BVLOS)
+<<<
+
+[REQUIREMENT]
+UID: REQ-12
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">C3-Link "Command, Control &amp; Communication" (OSO 6)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 6
+<<<
+
+[REQUIREMENT]
+UID: REQ-45
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">&#160;Applicant demonstrates compliance with other RF spectrum usage requirements (e.g.Directive 2014/53/EU), by showing that the UAS equipment is compliant with these requirements</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-46
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">The use of mechanisms to protect against interference (e.g. FHSS, frequency de-confliction by procedure).</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-44
+STATEMENT: >>>
+<xhtml:div><xhtml:p>C3-Link-Monitor "Command, Control &amp; Communication"</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-47
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">The remote pilot has continual and timely access to the relevant C3 information that could affect the safety of flight.</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-48
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Monitoring the C2 link signal strength and receiving an alert from the UAS HMI if the signal strength becomes too low.</xhtml:p></xhtml:div>
+<<<
+
+[/SECTION]
+
+[REQUIREMENT]
+UID: REQ-50
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="font-size: 200%">NON-Functional requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-51
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Remote crew "competency-based, theoretical and practical" training (OSO 9, OSO 15)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Self-declared with available evidence (OSO 9, OSO 15)
+<<<
+
+[REQUIREMENT]
+UID: REQ-90
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Training for the UAS Regulation shall be passed. Self-declared (with available evidence)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-278
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the airspace operating principles shall be passed. Self-declared (with available evidence)&#160;</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-279
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Training for the airmanship and aviation safety shall be passed. Self-declared (with available evidence)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-280
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Training for the human performance limitations shall be passed. Self-declared (with available evidence)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-281
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the meteorology shall be passed. Self-declared (with available evidence) (<xhtml:span style="text-decoration: underline;">OSO 23</xhtml:span>)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Self-declared with available evidence (OSO 23)
+<<<
+
+[REQUIREMENT]
+UID: REQ-282
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the navigation/charts shall be passed. Self-declared (with available evidence)&#160;</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-283
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the the UAS systems shall be passed. Self-declared (with available evidence)&#160;</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-284
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the operating procedures shall be passed. Self-declared (with available evidence)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-285
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Training for the multi-crew coordination shall be passed. Self-declared (with available evidence) <xhtml:span style="text-decoration: underline;">(OSO 16)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Self-declared with available evidence (OSO 16)
+<<<
+
+[REQUIREMENT]
+UID: REQ-52
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">Procedures</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-66
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Operational procedures (OSO 8) <xhtml:i><xhtml:span style="text-decoration: underline;">[human error is taken in consideration]</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+human error shall be considered (OSO 8)
+<<<
+
+[REQUIREMENT]
+UID: REQ-67
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Flight Planning</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-77
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Validated against standards considered adequate by the competent authority</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-68
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Pre- and post-flight <xhtml:b>inspections</xhtml:b></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-79
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Validated against standards considered adequate by the competent authority</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-69
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Procedures <xhtml:span style="font-style: italic;">to</xhtml:span> evaluate the environmental conditions <xhtml:i>before and during the mission (i.e. real-time evaluation)</xhtml:i> (OSO 23)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 23
+<<<
+
+[REQUIREMENT]
+UID: REQ-86
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Validated against standards considered adequate by the competent authority</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-70
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Procedures <xhtml:span style="font-style: italic;">to cope with</xhtml:span> unexpected adverse operating conditions <xhtml:i>(e.g. when ice is encountered during an operation not approved for icing conditions)</xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-83
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Validated against standards considered adequate by the competent authority</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-71
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Normal procedures<xhtml:span style="font-style: italic;">; [Operational Manual]</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-87
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Validated against standards considered adequate by the competent authority</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-72
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic"><xhtml:b>Contingency procedures</xhtml:b> (to cope with abnormal situations); [Operational Manual], "<xhtml:span style="text-decoration: underline;">require manual control by pilot</xhtml:span>"</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+require manual control by pilot / Easy Access Rules (2.3.1 C.1) p42
+<<<
+
+[REQUIREMENT]
+UID: REQ-81
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: Segoe UI"><xhtml:i>Adequacy of the contingency procedures is proven through&#160;</xhtml:i></xhtml:span><xhtml:span style="font-family: 'Segoe UI';">dedicated flight tests<xhtml:i>, or</xhtml:i> s</xhtml:span><xhtml:span style="font-family: 'Segoe UI';">imulation</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-73
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Emergency procedures <xhtml:i>(to cope with emergency situations); [Operational Manual],&#160;</xhtml:i><xhtml:span style="font-style: italic;">"</xhtml:span><xhtml:i><xhtml:span style="text-decoration: underline;">require manual control by pilot</xhtml:span>"</xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+require manual control by pilot
+<<<
+
+[REQUIREMENT]
+UID: REQ-82
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: 'Segoe UI';"><xhtml:i>Adequacy of the emergency procedures is proven through&#160;</xhtml:i></xhtml:span><xhtml:span style="font-family: 'Segoe UI';">dedicated flight tests<xhtml:i>, or</xhtml:i>&#160;s</xhtml:span><xhtml:span style="font-family: 'Segoe UI';">imulation</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-74
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Occurrence reporting procedures</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-88
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Validated against standards considered adequate by the competent authority</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-96
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Procedures to ensure crew members coordination and communication shall be defined (OSO 16)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 16
+<<<
+
+[REQUIREMENT]
+UID: REQ-97
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Assignment of tasks to the crew</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-98
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Establishment of step-by-step communications</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-99
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Applicant declares sufficient level of performance (<xhtml:span style="text-decoration: underline;">evidence required</xhtml:span>)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+evidence required
+<<<
+
+[REQUIREMENT]
+UID: REQ-220
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">Technical requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-53
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">UAS designed and produced by competent and proven entity (no requirements) (OSO 2)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+No requirements for SAIL II (OSO 2)
+<<<
+
+[REQUIREMENT]
+UID: REQ-54
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Maintenance (OSO 3)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 3
+<<<
+
+[REQUIREMENT]
+UID: REQ-55
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Definition of maintenance instructions accordicng UAS designers instructions and requirements</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-56
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">A</xhtml:span> list<xhtml:i>&#160;with authorised maintenance staff is created and kept up to date</xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-57
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">A maintenance log system is in place and kept up to date</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-58
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Developed to authority recognized design standards (<xhtml:span style="text-decoration: underline;"><xhtml:i>no requirements!</xhtml:i></xhtml:span>) (OSO 4)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+No requirements for SAIL II (OSO 4)
+<<<
+
+[REQUIREMENT]
+UID: REQ-59
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:b>System safety and reliability</xhtml:b> <xhtml:span style="text-decoration: underline;"><xhtml:i>(not mandatory)</xhtml:i></xhtml:span> <xhtml:b>(OSO 5)</xhtml:b></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+No requirements for SAIL II (OSO 5)
+<<<
+
+[REQUIREMENT]
+UID: REQ-60
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">A <xhtml:b>functional hazard assesment</xhtml:b> to show that hazards are minimised</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+JARUS AMC RPAS.1309 Issue 2.
+<<<
+
+[REQUIREMENT]
+UID: REQ-61
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">A&#160;</xhtml:span><xhtml:b style="font-style: italic;">design</xhtml:b> <xhtml:span style="font-style: italic;">and</xhtml:span> <xhtml:b style="font-style: italic;">installation appraisal</xhtml:b><xhtml:span style="font-style: italic;">&#160;to show that hazards are minimised</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-62
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Inspection (OSO 7)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 7
+<<<
+
+[REQUIREMENT]
+UID: REQ-63
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Inspection check-list <xhtml:i>is defined according manufacturers recommendations (if available)</xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+according manufacturers recommendations (if available)
+<<<
+
+[REQUIREMENT]
+UID: REQ-64
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Remote crew is trained <xhtml:span style="font-style: italic;">to perform the product inspection (selfe-declared with evidence) [see OSO 9]</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+selfe-declared with evidence
+<<<
+
+[REQUIREMENT]
+UID: REQ-76
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The limitations of the external systems supporting UAS operation shall be defined in an OM [Operational Manual] (OSO 11)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 11
+<<<
+
+[REQUIREMENT]
+UID: REQ-80
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">(a) identify these &#8216;external systems&#8217;;&#160;</xhtml:p><xhtml:p style="font-style: italic">(b) identify the modes of deterioration of the &#8216;external systems&#8217; (e.g. complete loss of GNSS, drift of the GNSS, latency issues, etc.) which would lead to a loss of control of the operation;&#160;</xhtml:p><xhtml:p style="font-style: italic">(c) describe the means to detect these modes of deterioration of the external systems/facilities; and&#160;</xhtml:p><xhtml:p style="font-style: italic">(d) describe the procedure(s) used when deterioration is detected (e.g. activation of the emergency recovery capability, switch to manual control, etc.).</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-92
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">External services (OSO 13) [Optional]</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Optional (OSO 13)
+<<<
+
+[REQUIREMENT]
+UID: REQ-93
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Effective communication between operator and support service is defined and established</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-94
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Roles and responsibilities between the applicant and the service provider are defined</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-95
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic">Applicant declares sufficient level of performance (<xhtml:span style="text-decoration: underline;">no evidence required</xhtml:span>)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+no evidence required
+<<<
+
+[REQUIREMENT]
+UID: REQ-221
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="font-family: Segoe UI">Supportive requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-91
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Operation Manual [OM] has to be defined (<xhtml:i><xhtml:span style="text-decoration: underline;">see Procedures</xhtml:span></xhtml:i>)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-100
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Remote crew is fit to operate (OSO 17)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-101
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Define a</xhtml:i> policy <xhtml:i>on how to evaluate whether the crew is fit to operate e.g:</xhtml:i></xhtml:p><xhtml:p style=" font-style: italic"><xhtml:span style="text-decoration: underline;">Last alcohol consumption &gt;= 8 hours before flight</xhtml:span></xhtml:p><xhtml:p style=" font-style: italic"><xhtml:span style="text-decoration: underline;">No medication</xhtml:span></xhtml:p><xhtml:p style=" font-style: italic"><xhtml:span style="font-family: Segoe UI; text-decoration: underline">No fewer</xhtml:span></xhtml:p><xhtml:p style=" font-style: italic"><xhtml:span style="font-family: Segoe UI; text-decoration: underline">No headache ...</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-102
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:span style="font-style: italic;">Applicant declares sufficient level of performance (</xhtml:span><xhtml:span style="font-style: italic; text-decoration: underline;">no evidence required</xhtml:span><xhtml:span style="font-style: italic;">)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+no evidence required
+<<<
+
+[REQUIREMENT]
+UID: REQ-103
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Human factor evaluation and HMI evaluation (OSO 20)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+OSO 20
+<<<
+
+[REQUIREMENT]
+UID: REQ-104
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Evaluation through</xhtml:i> inspection <xhtml:i>or</xhtml:i> analysis</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-105
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-style: italic;">Applicant declares sufficient level of performance (</xhtml:span><xhtml:span style="font-style: italic; text-decoration: underline;">evidence required</xhtml:span><xhtml:span style="font-style: italic;">)</xhtml:span></xhtml:p><xhtml:p style=" font-style: italic">The competent authority may request EASA to witness the HMI evaluation of the UAS.</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+evidence required
+<<<
+
+[REQUIREMENT]
+UID: REQ-106
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Definition of an Emergency Response Plan (Mitigation M3, "MEDIUM Integrity")</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-107
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Definition of</xhtml:i> criteria <xhtml:i>to identify an emergency situation (<xhtml:span style="text-decoration: underline;">see emergency procedures</xhtml:span>)</xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-108
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=" font-style: italic">Definition of remote crew duties in case of emergency (<xhtml:span style="text-decoration: underline;">see OSO 16</xhtml:span>)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+see OSO 16
+<<<
+
+[REQUIREMENT]
+UID: REQ-109
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Develop an</xhtml:i> ERP training syllabus <xhtml:i>and train regularly</xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-111
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Validation through a representative</xhtml:i> tabletop exercise</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-110
+STATEMENT: >>>
+<xhtml:div><xhtml:h2>Mission planing requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-112
+STATEMENT: >>>
+<xhtml:div><xhtml:p>Definition of an Operational Volume <xhtml:i>(Easy Access Rules (2.3.1 C.1) p42)</xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+Easy Access Rules (2.3.1 C.1) p42
+<<<
+
+[REQUIREMENT]
+UID: REQ-114
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Define</xhtml:i> Flight geography</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-115
+STATEMENT: >>>
+<xhtml:div><xhtml:p style=""><xhtml:i>Define</xhtml:i> Contingency volume <xhtml:i><xhtml:span style="text-decoration: underline;">(refer to Contingency procedures)</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-113
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial; font-family: &quot;Segoe UI&quot;;">Definition of&#160;</xhtml:span><xhtml:span style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;">a <xhtml:b>Ground Risk Buffer</xhtml:b> (Mitigation M1, "LOW Integrity")&#160;</xhtml:span><xhtml:span style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;"><xhtml:i>(Easy Access Rules (Annex B.2) p69)</xhtml:i></xhtml:span></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+(Mitigation M1, "LOW Integrity") (Easy Access Rules (Annex B.2) p69)
+<<<
+
+[REQUIREMENT]
+UID: REQ-116
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="font-style: italic"><xhtml:i style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;"><xhtml:span style="font-family: &quot;Segoe UI&quot;;">Definition of&#160;</xhtml:span>a Ground Risk Buffer applying</xhtml:i><xhtml:span style="font-family: Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;">&#160;1 to 1 rule</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-295
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:i style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;">Ground Risk Buffer shall be located</xhtml:i><xhtml:span style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;">&#160;&gt;= <xhtml:b>150m away from industrial area</xhtml:b>, residential area and assmblies of people&#160;</xhtml:span><xhtml:i style="font-family: Arial, sans-serif; font-variant-ligatures: normal; orphans: 2; widows: 2; text-decoration-thickness: initial;"><xhtml:span style="text-decoration: underline;">(assummed with reference to Open category)&#160;</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+assummed with reference to Open category
+<<<
+
+[REQUIREMENT]
+UID: REQ-118
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">Operational requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-119
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The drone shall not fly higher then 120m above ground level (AGL)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-120
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The drone shall not fly closer (horizontal and vertical distance) then 30m to uninvolved persons&#160;<xhtml:i><xhtml:span style="text-decoration: underline;">(assummed with reference to Open category)&#160;</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+assummed with reference to Open category
+<<<
+
+[REQUIREMENT]
+UID: REQ-121
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The drone shall not exceed 50m/s (180 km/h)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-122
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The drone shall keep horizontal distance of 50m to objects higher 105m&#160;<xhtml:i><xhtml:span style="text-decoration: underline;">(assummed with reference to Open category)&#160;</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+assummed with reference to Open category
+<<<
+
+[REQUIREMENT]
+UID: REQ-123
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The drone shall keep &gt;= 15m vertical distance to objects &lt;= 105m&#160;<xhtml:i><xhtml:span style="text-decoration: underline;">(assummed with reference to Open category)&#160;</xhtml:span></xhtml:i></xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+assummed with reference to Open category
+<<<
+
+[REQUIREMENT]
+UID: REQ-125
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The remote pilot shall be able to initiate automated mode ONLY if the requirements for this mode are met</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-202
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The drone shall not fly if wind / gusts / turbulences welocity exceed the threshold (<xhtml:i><xhtml:span style="text-decoration: underline;">drone specific value, see in ConOps and UAV manual</xhtml:span></xhtml:i>)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+drone specific value, see in ConOps and UAV manual
+<<<
+
+[REQUIREMENT]
+UID: REQ-242
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The drone MUST be insured for at least&#160;750.000 SZR</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+NAA requirement
+<<<
+
+[REQUIREMENT]
+UID: REQ-243
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The landing point shall be free from uninvolved persons (30m) and Objects (50m) (<xhtml:span style="text-decoration: underline;">see Operational requirements</xhtml:span>)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-136
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">Emergency requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-124
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The remote pilot shall be able to take over manually (<xhtml:i>manual control</xhtml:i>) at any point in time</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-127
+STATEMENT: >>>
+<xhtml:div><xhtml:p>The remote pilot shall be able to terminate the flight manually at any point in time</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+ConOps SORA (Annex A (A.2.3.5 4)) p13
+<<<
+
+[REQUIREMENT]
+UID: REQ-126
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="color: #FF6666">The remote pilot shall be able to kill the engines at any point in time&#160;through combination of Inputs (ConOps)</xhtml:p></xhtml:div>
+<<<
+COMMENT: >>>
+ConOps SORA (Annex A (A.2.3.5 4)) p13
+<<<
+
+[REQUIREMENT]
+UID: REQ-128
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The drone shall try to automatically recover the data link latest after 5s of connection loss (<xhtml:span style="text-decoration: underline;">see Data link recovery</xhtml:span>)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-211
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">Pre Flight</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-212
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The geo-awareness / geo fencing system geographical data shall be verified if its up-to-date</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-213
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Verify the C2-Link latency and signal strength, the latency shall not exceed 5s.</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-214
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Verify the battery status</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-215
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Verify that the direct remote identification is broadcasted</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-219
+STATEMENT: >>>
+<xhtml:div><xhtml:h2 style="">AUSTROCONTROL requirements</xhtml:h2></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-254
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Registration number of the operator shall be acquired</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-255
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Serial number or registration number shall be disclosed</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-256
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">ConOps shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-257
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Risk assesment (SORA) shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-258
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">The OSOs "Operational Safety Objectives" shall be defined and provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-259
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Anti-Collision Lighting shall be implemented and described</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-260
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Drone status indications and warning signals shall be described</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-261
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed drone description / schematics / manuals shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-262
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed autopilot description shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-263
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed flight mode description shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-264
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed flight cancellation-system description shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-265
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed description of the ground control station shall be provided (manufacturer and model)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-266
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed description of the control connection shall be provided (with frequency bands)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-267
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: 'Segoe UI';">If applicable, a detailed description of the telemetry connection shall be provided (with frequency bands)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-268
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: 'Segoe UI';">If applicable, a detailed</xhtml:span><xhtml:span style="font-family: 'Segoe UI';">&#160;description of the connection to video feed shall be provided (with frequency bands)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-270
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: 'Segoe UI';">If applicable, a detailed</xhtml:span><xhtml:span style="font-family: 'Segoe UI';">&#160;description of the payload connection shall be provided (with frequency bands)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-271
+STATEMENT: >>>
+<xhtml:div><xhtml:p><xhtml:span style="font-family: 'Segoe UI';">If applicable, a detailed</xhtml:span><xhtml:span style="font-family: 'Segoe UI';">&#160;description of the payload shall be provided (impact on center of mass and drone weight/performance. Is it integrated or detachable?)</xhtml:span></xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-272
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">Detailed description of the drone performance (max. velocity, service ceiling, acceptable weather conditions )</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-273
+STATEMENT: >>>
+<xhtml:div><xhtml:p style="">If applicable, a detailed description of the DAA-systems "Detect And Avoid" shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-274
+STATEMENT: >>>
+<xhtml:div><xhtml:p>If applicable, a detailed description of the GEO-FENCING shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-275
+STATEMENT: >>>
+<xhtml:div><xhtml:p>If applicable, a detailed description of the GEO-CAGING shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-269
+STATEMENT: >>>
+<xhtml:div><xhtml:p>If applicable, a detailed description of the TRANSPONDE shall be provided</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-276
+STATEMENT: >>>
+<xhtml:div><xhtml:p>If applicable, a detailed description of the IMPACT-REDUCTION systems shall be provided (e.g. parachute)</xhtml:p></xhtml:div>
+<<<
+
+[REQUIREMENT]
+UID: REQ-277
+STATEMENT: >>>
+<xhtml:div/>
+<<<

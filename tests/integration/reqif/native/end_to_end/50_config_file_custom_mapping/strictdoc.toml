@@ -1,0 +1,10 @@
+[reqif]
+  [reqif.mapping]
+    [reqif.mapping.requirement]
+      UID = "ReqIF.ForeignID"
+      TITLE = "ReqIF.Name"
+      STATEMENT = "ReqIF.Text"
+      COMMENT = "Notes"
+    [reqif.mapping.section]
+      TITLE = "ReqIF.ChapterName"
+      FREETEXT = "ReqIF.Text"
