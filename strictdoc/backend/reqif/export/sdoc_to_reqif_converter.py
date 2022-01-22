@@ -29,7 +29,7 @@ from strictdoc.backend.reqif.sdoc_reqif_fields import (
     ReqIFChapterField,
     SDocRequirementReservedField,
     SDOC_TO_REQIF_FIELD_MAP,
-    SDOC_SPEC_OBJECT_TYPE_SINGLETON,
+    SDOC_SPEC_OBJECT_TYPE_SINGLETON, SDOC_SPECIFICATION_TYPE_SINGLETON,
     SDOC_SPECIFICATION_TYPE_SINGLETON,
     SDOC_SPEC_RELATION_PARENT_TYPE_SINGLETON,
 )
@@ -172,6 +172,30 @@ class SDocToReqIFObjectConverter:
                 spec_attribute_map={},
             )
             spec_types.append(specification_type)
+# TODO: TBD if above information is enough for capella to accept reqif
+#            specification_type = ReqIFSpecificationType(
+#                description=None,
+#                identifier=SDOC_SPECIFICATION_TYPE_SINGLETON,
+#                last_change="",
+#                long_name=SDOC_SPECIFICATION_TYPE_SINGLETON,
+#                spec_attributes=[SpecAttributeDefinition(
+#                    xml_node=None,
+#                    attribute_type=SpecObjectAttributeType.STRING,
+#                    description=None,
+#                    identifier="TBD",
+#                    last_change=None,
+#                    datatype_definition="123",
+#                    long_name="ReqIF.Name",
+#                    editable=None,
+#                    default_value=None,
+#                    multi_valued=None
+#                )],
+#                spec_attribute_map={
+#                    SDOC_SPECIFICATION_TYPE_SINGLETON: SDOC_SPECIFICATION_TYPE_SINGLETON
+#                }
+#            )
+#            spec_types.append(specification_type)
+
             document_iterator = DocumentCachingIterator(document)
 
             parents: Dict[ReqIFSpecHierarchy, ReqIFSpecHierarchy] = {}
