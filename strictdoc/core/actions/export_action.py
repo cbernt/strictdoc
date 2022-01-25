@@ -126,6 +126,7 @@ class ExportAction:
         if "reqif-sdoc" in config.formats:
             output_reqif_root = f"{output_dir}/reqif"
             ReqIFExport.export(
+                config,
                 document_tree,
                 output_reqif_root,
             )

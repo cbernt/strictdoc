@@ -26,12 +26,19 @@ class ReqIFChapterField:
     TEXT = "ReqIF.Text"
 
 
-SDOC_TO_REQIF_FIELD_MAP = {
+_SDOC_TO_REQIF_FIELD_MAP = {
     SDocRequirementReservedField.UID: ReqIFRequirementReservedField.UID,
     SDocRequirementReservedField.TITLE: ReqIFRequirementReservedField.NAME,
     SDocRequirementReservedField.STATEMENT: ReqIFRequirementReservedField.TEXT,
     SDocRequirementReservedField.COMMENT: ReqIFRequirementReservedField.COMMENT_NOTES,  # noqa: E501
 }
+
+
+class SDocToReqIFDefaultMapping:
+    @staticmethod
+    def map_sdoc_field(sdoc_field: str):
+        return _SDOC_TO_REQIF_FIELD_MAP[sdoc_field]
+
 
 REQIF_MAP_TO_SDOC_FIELD_MAP = {
     ReqIFRequirementReservedField.UID: SDocRequirementReservedField.UID,

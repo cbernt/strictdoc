@@ -1,10 +1,10 @@
 [reqif]
   [reqif.mapping]
     [reqif.mapping.requirement]
-      UID = "ReqIF.ForeignID"
-      TITLE = "ReqIF.Name"
-      STATEMENT = "ReqIF.Text"
-      COMMENT = "Notes"
+      UID = "Mapped.UID"
+      TITLE = "Mapped.TITLE"
+      STATEMENT = "Mapped.STATEMENT"
+      COMMENT = "Mapped.COMMENT"
     [reqif.mapping.section]
-      TITLE = "ReqIF.ChapterName"
-      FREETEXT = "ReqIF.Text"
+      TITLE = "Mapped.TITLE"
+      FREETEXT = "Mapped.FREETEXT"

@@ -1,6 +1,7 @@
 import os
 import sys
 
+
 try:
     STRICTDOC_ROOT_PATH = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", "..")
@@ -10,6 +11,7 @@ try:
     sys.path.append(STRICTDOC_ROOT_PATH)
 
     from strictdoc.cli.cli_arg_parser import create_sdoc_args_parser
+    from strictdoc.cli.config_parser import ConfigParser
     from strictdoc.commands.dump_grammar_command import DumpGrammarCommand
     from strictdoc.commands.version_command import VersionCommand
     from strictdoc.core.actions.export_action import ExportAction
@@ -23,7 +25,9 @@ except FileNotFoundError:
 
 
 def _main(parallelizer):
-    parser = create_sdoc_args_parser()
+    file_config = ConfigParser.parse_config()
+
+    parser = create_sdoc_args_parser(file_config=file_config)
 
     if parser.is_passthrough_command:
         config = parser.get_passthrough_config()

@@ -1,6 +1,8 @@
 import argparse
 from typing import Optional
 
+from strictdoc.cli.config_parser import SDocConfig
+
 EXPORT_FORMATS = ["html", "html-standalone", "rst", "excel", "reqif-sdoc"]
 
 REQIF_PARSERS = ["sdoc", "fm-studio"]
@@ -201,6 +203,7 @@ class PassthroughCommandConfig:
 class ExportCommandConfig:  # pylint: disable=too-many-instance-attributes
     def __init__(  # pylint: disable=too-many-arguments
         self,
+        file_config: SDocConfig,
         strictdoc_root_path,
         input_paths,
         output_dir,
@@ -230,8 +233,9 @@ class DumpGrammarCommandConfig:
 
 
 class SDocArgsParser:
-    def __init__(self, args):
+    def __init__(self, args, file_config: Optional[SDocConfig]):
         self.args = args
+        self.file_config: Optional[SDocConfig] = file_config
 
     @property
     def is_passthrough_command(self):
@@ -258,22 +262,26 @@ class SDocArgsParser:
             self.args.input_file, self.args.output_file
         )
 
-    def get_export_config(self, strictdoc_root_path) -> ExportCommandConfig:
+    def get_export_config(
+        self,
+        strictdoc_root_path: str,
+    ) -> ExportCommandConfig:
         project_title = (
             self.args.project_title
             if self.args.project_title
             else "Untitled Project"
         )
         return ExportCommandConfig(
-            strictdoc_root_path,
-            self.args.input_paths,
-            self.args.output_dir,
-            project_title,
-            self.args.formats,
-            self.args.fields,
-            self.args.no_parallelization,
-            self.args.enable_mathjax,
-            self.args.experimental_enable_file_traceability,
+            file_config=self.file_config,
+            strictdoc_root_path=strictdoc_root_path,
+            input_paths=self.args.input_paths,
+            output_dir=self.args.output_dir,
+            project_title=project_title,
+            formats=self.args.formats,
+            fields=self.args.fields,
+            no_parallelization=self.args.no_parallelization,
+            enable_mathjax=self.args.enable_mathjax,
+            experimental_enable_file_traceability=self.args.experimental_enable_file_traceability,
         )
 
     def get_import_config(self, _) -> ImportCommandConfig:
@@ -285,9 +293,11 @@ class SDocArgsParser:
         return DumpGrammarCommandConfig(output_file=self.args.output_file)
 
 
-def create_sdoc_args_parser(testing_args=None) -> SDocArgsParser:
+def create_sdoc_args_parser(
+    file_config: Optional[SDocConfig], testing_args=None
+) -> SDocArgsParser:
     args = testing_args
     if not args:
         parser = cli_args_parser()
         args = parser.parse_args()
-    return SDocArgsParser(args)
+    return SDocArgsParser(args, file_config=file_config)

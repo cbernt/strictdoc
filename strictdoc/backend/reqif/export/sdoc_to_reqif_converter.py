@@ -24,8 +24,8 @@ from reqif.reqif_bundle import ReqIFBundle
 from strictdoc.backend.reqif.sdoc_reqif_fields import (
     ReqIFChapterField,
     SDocRequirementReservedField,
-    SDOC_TO_REQIF_FIELD_MAP,
     SDOC_SPEC_OBJECT_TYPE_SINGLETON,
+    SDocToReqIFDefaultMapping,
 )
 from strictdoc.backend.sdoc.models.document import Document
 from strictdoc.backend.sdoc.models.document_grammar import DocumentGrammar
@@ -37,6 +37,7 @@ from strictdoc.backend.sdoc.models.type_system import (
     GrammarElementFieldMultipleChoice,
 )
 from strictdoc.backend.sdoc.writer import SDWriter
+from strictdoc.cli.cli_arg_parser import ExportCommandConfig
 from strictdoc.core.document_iterator import DocumentCachingIterator
 from strictdoc.core.document_tree import DocumentTree
 from strictdoc.helpers.string import escape
@@ -57,8 +58,10 @@ class SDocToReqIFObjectConverter:
     @classmethod
     def convert_document_tree(
         cls,
+        config: ExportCommandConfig,
         document_tree: DocumentTree,
     ):
+        field_mapping = SDocToReqIFDefaultMapping()
         # TODO
         namespace = "http://www.omg.org/spec/ReqIF/20110401/reqif.xsd"
         configuration = "https://github.com/strictdoc-project/strictdoc"
@@ -164,7 +167,7 @@ class SDocToReqIFObjectConverter:
                         raise NotImplementedError(field) from None
 
             document_spec_types = cls._convert_document_grammar_to_spec_types(
-                grammar=document.grammar, data_types_lookup=data_types_lookup
+                grammar=document.grammar, data_types_lookup=data_types_lookup, field_mapping=field_mapping
             )
             spec_types.extend(document_spec_types)
             document_iterator = DocumentCachingIterator(document)
@@ -252,7 +255,7 @@ class SDocToReqIFObjectConverter:
 
                 elif node.is_requirement:
                     spec_object = cls._convert_requirement_to_spec_object(
-                        requirement=node, grammar=document.grammar
+                        requirement=node, grammar=document.grammar, field_mapping=field_mapping
                     )
                     spec_objects.append(spec_object)
                     hierarchy = ReqIFSpecHierarchy(
@@ -327,6 +330,7 @@ class SDocToReqIFObjectConverter:
         cls,
         requirement: Requirement,
         grammar: DocumentGrammar,
+        field_mapping: SDocToReqIFDefaultMapping,
     ) -> ReqIFSpecObject:
         grammar_element = grammar.elements_by_type[requirement.requirement_type]
 
@@ -360,7 +364,7 @@ class SDocToReqIFObjectConverter:
                 )
                 field_name = field.field_name
                 if field_name in SDocRequirementReservedField.SET:
-                    field_name = SDOC_TO_REQIF_FIELD_MAP[field_name]
+                    field_name = field_mapping.map_sdoc_field(field_name)
                 attribute = SpecObjectAttribute(
                     xml_node=None,
                     attribute_type=SpecObjectAttributeType.STRING,
@@ -387,7 +391,7 @@ class SDocToReqIFObjectConverter:
 
     @classmethod
     def _convert_document_grammar_to_spec_types(
-        cls, grammar: DocumentGrammar, data_types_lookup
+        cls, grammar: DocumentGrammar, data_types_lookup, field_mapping: SDocToReqIFDefaultMapping
     ):
         spec_object_types: List = []
 
@@ -404,7 +408,7 @@ class SDocToReqIFObjectConverter:
                 if isinstance(field, GrammarElementFieldString):
                     field_title = field.title
                     if field_title in SDocRequirementReservedField.SET:
-                        field_title = SDOC_TO_REQIF_FIELD_MAP[field_title]
+                        field_title = field_mapping.map_sdoc_field(field_title)
                     attribute = SpecAttributeDefinition(
                         xml_node=None,
                         attribute_type=SpecObjectAttributeType.STRING,

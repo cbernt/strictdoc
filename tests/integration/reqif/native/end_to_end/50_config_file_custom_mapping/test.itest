@@ -1,3 +1,6 @@
 RUN: %strictdoc export --formats=reqif-sdoc %S/sample.sdoc
-_UN: %strictdoc import reqif sdoc %S/output/reqif/output.reqif %S/output/sample.sdoc
-_UN: diff %S/sample.sdoc %S/output/sample.sdoc
+RUN: cat %S/output/reqif/output.reqif | filecheck %s
+CHECK: Mapped.UID
+
+UN: %strictdoc import reqif sdoc %S/output/reqif/output.reqif %S/output/sample.sdoc
+UN: diff %S/sample.sdoc %S/output/sample.sdoc

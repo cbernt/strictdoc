@@ -1,2 +1,8 @@
 [DOCUMENT]
 TITLE: Empty ReqIF document
+
+[REQUIREMENT]
+TITLE: Req Title
+STATEMENT: >>>
+Req Statement
+<<<
