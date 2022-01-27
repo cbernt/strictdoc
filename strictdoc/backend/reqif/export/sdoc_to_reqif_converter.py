@@ -29,7 +29,8 @@ from strictdoc.backend.reqif.sdoc_reqif_fields import (
     ReqIFChapterField,
     SDocRequirementReservedField,
     SDOC_TO_REQIF_FIELD_MAP,
-    SDOC_SPEC_OBJECT_TYPE_SINGLETON, SDOC_SPECIFICATION_TYPE_SINGLETON,
+    SDOC_SPEC_OBJECT_TYPE_SINGLETON,
+    SDOC_SPECIFICATION_TYPE_SINGLETON,
     SDOC_SPECIFICATION_TYPE_SINGLETON,
     SDOC_SPEC_RELATION_PARENT_TYPE_SINGLETON,
 )
@@ -58,6 +59,10 @@ class StrictDocReqIFTypes(Enum):
 def generate_unique_identifier(element_type: str) -> str:
     return f"{element_type}-{uuid.uuid4()}"
 
+# TODO: globals to told the added iot datatype ids
+dt_iot_id = None
+dt_iot_reqenum_id = None
+ad_iot_id = None
 
 class SDocToReqIFBuildContext:
     def __init__(self):
@@ -158,11 +163,63 @@ class SDocToReqIFObjectConverter:
                     else:
                         raise NotImplementedError(field) from None
 
+
+
+
+
+
+            values = []
+            values_map = {}
+            option = "0"
+            value = ReqIFEnumValue(
+                description=None,
+                identifier=generate_unique_identifier("DT-IOT-REQ"),
+                # TODO: the requiment implementation needs to be extended to hold long_name as well!!!
+                long_name = "Requirement",
+                last_change=None,
+                key=option,
+                other_content=None,
+            )
+            values.append(value)
+            values_map[option] = option
+
+            global dt_iot_reqenum_id
+            dt_iot_reqenum_id = value.identifier            
+
+            data_type = ReqIFDataTypeDefinitionEnumeration(
+                is_self_closed=False,
+                description=None,
+                identifier=(
+                    generate_unique_identifier(
+                        StrictDocReqIFTypes.SINGLE_CHOICE.value
+                    )
+                ),
+                last_change=None,
+                long_name="IE Object Type",
+                multi_valued=False,
+                values=values,
+                values_map={},
+            )
+            data_types.append(data_type)
+            data_types_lookup[
+                StrictDocReqIFTypes.SINGLE_CHOICE.value
+            ] = data_type.identifier
+
+            # TODO: is there a better way to get the datatype and attribute type ids into the requirement?!??!
+            global dt_iot_id
+            dt_iot_id = data_type.identifier
+
+
+
+
             document_spec_types = cls._convert_document_grammar_to_spec_types(
                 grammar=document.grammar, data_types_lookup=data_types_lookup
             )
             spec_types.extend(document_spec_types)
 
+
+                    
+            
             specification_type = ReqIFSpecificationType(
                 description=None,
                 identifier=SDOC_SPECIFICATION_TYPE_SINGLETON,
@@ -170,6 +227,24 @@ class SDocToReqIFObjectConverter:
                 long_name=SDOC_SPECIFICATION_TYPE_SINGLETON,
                 spec_attributes=None,
                 spec_attribute_map={},
+                # TODO: setting the attribute is optional
+#                spec_attributes=[
+#                    SpecAttributeDefinition(
+#                        xml_node=None,
+#                        attribute_type=SpecObjectAttributeType.STRING,
+#                        description=None,
+#                        identifier=generate_unique_identifier(""),
+#                        last_change=None,
+#                        datatype_definition="123",
+#                        long_name="ReqIF.Name",
+#                        editable=None,
+#                        default_value=None,
+#                        multi_valued=None,
+#                    )
+#                ],
+#                spec_attribute_map={
+#                    SDOC_SPECIFICATION_TYPE_SINGLETON: SDOC_SPECIFICATION_TYPE_SINGLETON
+#                },
             )
             spec_types.append(specification_type)
 # TODO: TBD if above information is enough for capella to accept reqif
@@ -442,6 +517,23 @@ class SDocToReqIFObjectConverter:
 
         spec_object = ReqIFSpecObject.create(
             identifier=requirement_identifier,
+#        global dt_iot_reqenum_id
+#        global ad_iot_id
+#        attribute = SpecObjectAttribute(
+#				xml_node=None,
+#				attribute_type=SpecObjectAttributeType.ENUMERATION,
+#				definition_ref=ad_iot_id,
+#				value=dt_iot_reqenum_id,
+#			)
+#        attributes.append(attribute)
+#        attribute_map[ad_iot_id] = attribute
+
+#        spec_object = ReqIFSpecObject(
+#            xml_node=None,
+#            description=None,
+#            identifier=generate_unique_identifier("REQUIREMENT"),
+#            last_change=None,
+#            long_name=None,
             spec_object_type=SDOC_SPEC_OBJECT_TYPE_SINGLETON,
             attributes=attributes,
         )
@@ -515,6 +607,34 @@ class SDocToReqIFObjectConverter:
             attribute_definitions.append(chapter_name_attribute)
 
             spec_object_type = ReqIFSpecObjectType.create(
+
+
+#            # IE Object Type Attribute
+#            attribute = SpecAttributeDefinition(
+#                xml_node=None,
+#                attribute_type=SpecObjectAttributeType.ENUMERATION,
+#                description=None,
+#                identifier= generate_unique_identifier("SA-IOT-REQ"),                
+#                last_change=None,
+#                datatype_definition=(
+#                    data_types_lookup[
+#                        StrictDocReqIFTypes.SINGLE_CHOICE.value
+#                    ]
+#                ),
+#                long_name="IE Object Type",
+#                editable=None,
+#                default_value=None,
+#                multi_valued=False,
+#            )
+#            attribute_definitions.append(attribute)
+#            attribute_map[attribute.identifier] = attribute
+#            global ad_iot_id
+#            ad_iot_id = attribute.identifier
+#
+#
+#
+#            spec_object_type = ReqIFSpecObjectType(
+#                description=None,
                 identifier=SDOC_SPEC_OBJECT_TYPE_SINGLETON,
                 long_name=element.tag,
                 attribute_definitions=attribute_definitions,
