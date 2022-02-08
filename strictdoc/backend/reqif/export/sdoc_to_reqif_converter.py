@@ -119,6 +119,7 @@ class SDocToReqIFObjectConverter:
                                     "ENUM-VALUE"
                                 ),
                                 key=option,
+                                long_name=None
                             )
                             values.append(value)
                             values_map[option] = option

@@ -1,3 +1,11 @@
+
+
+
+		# (
+  #  field_name = 'Capella.Allocs' ':' field_value=/\[(.*$)\]/ '\n'
+  #) |
+ 
+
 STRICTDOC_GRAMMAR = r"""
 Document[noskipws]:
   '[DOCUMENT]' '\n'
@@ -94,7 +102,7 @@ Section[noskipws]:
 ;
 
 SectionOrRequirement[noskipws]:
-  '\n' (Section | Requirement | CompositeRequirement)
+  ('\n')+ (Section | Requirement | CompositeRequirement)
 ;
 
 SpaceThenRequirement[noskipws]:
@@ -123,18 +131,20 @@ RequirementType[noskipws]:
 ;
 
 RequirementField[noskipws]:
+
   (
     field_name = 'REFS' ':' '\n'
     (field_value_references += Reference)
-  ) |
+  ) |  
   (
     field_name = FieldName ':'
-    (
+    (      
       ((' ' field_value = SingleLineString | field_value = '') '\n') |
-      (' ' (field_value_multiline = MultiLineString) '\n')
+      (' ' (field_value_multiline = MultiLineString) '\n')      
     )
-  )
+  ) 
 ;
+
 
 CompositeRequirement[noskipws]:
   '[COMPOSITE_' requirement_type = RequirementType ']' '\n'
@@ -146,6 +156,12 @@ CompositeRequirement[noskipws]:
   '\n'
   '[/COMPOSITE_REQUIREMENT]' '\n'
 ;
+
+CapellaField[noskipws]:
+  field_value = /\[(.*$)\]/
+;
+
+
 
 ChoiceOption[noskipws]:
   /[\w\/-]+( *[\w\/-]+)*/
