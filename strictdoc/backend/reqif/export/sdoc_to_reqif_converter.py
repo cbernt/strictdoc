@@ -199,7 +199,7 @@ class SDocToReqIFObjectConverter:
                 long_name="IE Object Type",
                 multi_valued=False,
                 values=values,
-                values_map={},
+#                values_map={},
             )
             data_types.append(data_type)
             data_types_lookup[
