@@ -190,3 +190,8 @@ class ReqIFToSDocFactory:
                 fields.append(requirement_field)
                 requirement.ordered_fields_lookup["REFS"] = [requirement_field]
         return requirement
+
+    # CB 20220314 readded function to add requirement refs
+    @staticmethod
+    def create_reference(requirement: Requirement, spec_object_parent):
+        return Reference(requirement, "Parent", spec_object_parent)

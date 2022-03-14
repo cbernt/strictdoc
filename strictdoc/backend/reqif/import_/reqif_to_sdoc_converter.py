@@ -22,6 +22,7 @@ from strictdoc.backend.sdoc.models.document_grammar import (
 )
 from strictdoc.backend.sdoc.models.requirement import (
     Requirement,
+    RequirementField,
 )
 from strictdoc.backend.sdoc.models.section import Section
 from strictdoc.backend.sdoc.models.type_system import (
@@ -127,6 +128,7 @@ class ReqIFToSDocConverter:
                             )
                     else:
                         raise NotImplementedError(attribute) from None
+
                 requirement_element = GrammarElement(
                     parent=None, tag="REQUIREMENT", fields=fields
                 )
@@ -134,6 +136,8 @@ class ReqIFToSDocConverter:
                 grammar = DocumentGrammar(parent=document, elements=elements)
                 grammar.is_default = False
                 document.grammar = grammar
+
+        
 
         for current_hierarchy in reqif_bundle.iterate_specification_hierarchy(
             specification
@@ -172,7 +176,43 @@ class ReqIFToSDocConverter:
                         level=current_hierarchy.level,
                     )
                 )
+
+
+
+                # CB 20220314 - need to add REFs as well
+                # -- NOTE: in the origial strictdoc version breakes adding REFs by moving
+                #    their addition into a partially implemented reqif_to_sdoc_factory.py
+                spec_object_parents = reqif_bundle.get_spec_object_parents(
+                    spec_object.identifier
+                )
+                parent_refs = []
+                for spec_object_parent in spec_object_parents:
+                    parent_refs.append(
+                        mapping.create_reference(
+                            requirement, spec_object_parent
+                        )
+                    )
+                if len(parent_refs) > 0:
+                    requirement_field = RequirementField(
+                        parent=requirement,
+                        field_name="REFS",
+                        field_value=None,
+                        field_value_multiline=None,
+                        field_value_references=parent_refs,
+                        #field_value_special_fields=None,
+                    )
+                    # TODO: This is extremely wrong.
+                    requirement.fields.append(requirement_field)
+                    requirement.ordered_fields_lookup["REFS"] = [
+                        requirement_field
+                    ]
+
+
                 current_section.section_contents.append(requirement)
+
+          
+
+
             else:
                 raise NotImplementedError(spec_object) from None
 
