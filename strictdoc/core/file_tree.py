@@ -152,9 +152,9 @@ class FileFinder:
         folder_map = {root_path: root_folder}
 
         for current_root_path, dirs, files in os.walk(root_path, topdown=True):
-            if current_root_path == config.output_dir:
-                dirs[:] = []
-                continue
+            #if current_root_path == config.output_dir:
+            #    dirs[:] = []
+            #    continue
 
             dirs[:] = [
                 d

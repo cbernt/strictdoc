@@ -123,7 +123,7 @@ class SourceFilesFinder:
                 output_file_full_path,
             )
             found_source_files.append(source_file)
-            map_file_to_source[file] = source_file
+            map_file_to_source[os.path.normpath(file.get_full_path())] = source_file
 
         source_tree = SourceTree(
             file_tree, found_source_files, map_file_to_source

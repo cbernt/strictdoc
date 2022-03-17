@@ -1,3 +1,4 @@
+import os
 import uuid
 import datetime
 from enum import Enum
@@ -359,6 +360,7 @@ class SDocToReqIFObjectConverter:
                         requirement=node,
                         grammar=document.grammar,
                         context=context,
+                        document_tree=document_tree,
                     )
                     spec_objects.append(spec_object)
                     hierarchy = ReqIFSpecHierarchy(
@@ -398,7 +400,7 @@ class SDocToReqIFObjectConverter:
         ) in context.map_uid_to_parent_uids.items():
             spec_object = context.map_uid_to_spec_objects[requirement_id]
             for parent_uid in parent_uids:
-                parent_spec_object = context.map_uid_to_spec_objects[parent_uid]
+                parent_spec_object = context.map_uid_to_spec_objects[parent_uid] # the parent_uid used here is not part of the map!
                 spec_relations.append(
                     ReqIFSpecRelation(
                         xml_node=None,
@@ -466,6 +468,7 @@ class SDocToReqIFObjectConverter:
         requirement: Requirement,
         grammar: DocumentGrammar,
         context: SDocToReqIFBuildContext,
+        document_tree: DocumentTree,
     ) -> ReqIFSpecObject:
         requirement_identifier = generate_unique_identifier("REQUIREMENT")
         grammar_element = grammar.elements_by_type[requirement.requirement_type]
@@ -475,12 +478,29 @@ class SDocToReqIFObjectConverter:
             if field.field_name == "REFS":
                 parent_references = []
                 for reference in field.field_value_references:
-                    if reference.ref_type != "Parent":
-                        continue
-                    parent_references.append(reference.path)
-                    context.map_uid_to_parent_uids[
-                        requirement.uid
-                    ] = parent_references
+                    if reference.ref_type == "Parent":                        
+                        parent_references.append(reference.path)
+                        context.map_uid_to_parent_uids[
+                            requirement.uid
+                        ] = parent_references
+                    elif reference.ref_type == "File":
+                        root_folder_or_file: Folder = document_tree.file_tree[0].root_folder_or_file
+                        doctree_root_abs_path = root_folder_or_file.root_path
+                        doctree_root_abs_path = (
+                            os.path.dirname(doctree_root_abs_path)
+                            if os.path.isfile(doctree_root_abs_path)
+                            else doctree_root_abs_path
+                        )
+                        #        doctree_root_abs_path =  os.path.normpath(os.path.join(doctree_root_abs_path, "../"))
+                        doctree_root_abs_path = os.path.normpath(doctree_root_abs_path)
+                        abspath = os.path.normpath(os.path.join(doctree_root_abs_path,reference.path))
+                        attribute = SpecObjectAttribute(
+                            xml_node=None,
+                            attribute_type=SpecObjectAttributeType.STRING,
+                            definition_ref="File.Refs",
+                            value=document_tree.source_tree.map_file_to_source[abspath].in_doctree_source_file_rel_path,
+                        )
+                        attributes.append(attribute)
                 continue
             grammar_field = grammar_element.fields_map[field.field_name]
             if isinstance(grammar_field, GrammarElementFieldSingleChoice):
