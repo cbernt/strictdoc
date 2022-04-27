@@ -1,4 +1,6 @@
-from jinja2 import Environment, PackageLoader, StrictUndefined
+import os
+import sys
+from jinja2 import Environment, PackageLoader,FileSystemLoader, StrictUndefined
 
 from strictdoc.export.html.document_type import DocumentType
 
@@ -17,9 +19,24 @@ class DocumentDeepTraceHTMLGenerator:
     ):
         output = ""
 
-        template = DocumentDeepTraceHTMLGenerator.env.get_template(
-            "single_document_traceability_deep/document.jinja.html"
-        )
+        if getattr(sys, 'frozen', False):
+             # we are running in a bundle
+            exe_dir = sys._MEIPASS
+            
+            bundle_dir = os.path.join(exe_dir,"strictdoc","strictdoc","export","html","templates")
+            print("bundledir:" + bundle_dir)
+            l_loader = FileSystemLoader(searchpath=bundle_dir)
+            l_env = Environment(
+                loader=l_loader,
+                undefined=StrictUndefined,
+            )
+            template = l_env.get_template(
+                "single_document_traceability_deep/document.jinja.html"
+                )
+        else: 
+            template = DocumentDeepTraceHTMLGenerator.env.get_template(
+                "single_document_traceability_deep/document.jinja.html"
+            )
 
         root_path = document.meta.get_root_path_prefix()
         static_path = f"{root_path}/_static"

@@ -1,4 +1,6 @@
-from jinja2 import Environment, PackageLoader, StrictUndefined
+import os
+import sys
+from jinja2 import Environment, PackageLoader,FileSystemLoader, StrictUndefined
 
 from strictdoc.cli.cli_arg_parser import ExportCommandConfig
 from strictdoc.core.document_tree_iterator import DocumentTreeIterator
@@ -25,9 +27,22 @@ class RequirementsCoverageHTMLGenerator:
 
         output = ""
 
-        template = RequirementsCoverageHTMLGenerator.env.get_template(
-            "requirements_coverage/requirements_coverage.jinja.html"
-        )
+        if getattr(sys, 'frozen', False):
+             # we are running in a bundle
+            exe_dir = sys._MEIPASS
+            
+            bundle_dir = os.path.join(exe_dir,"strictdoc","strictdoc","export","html","templates")
+            print("bundledir:" + bundle_dir)
+            l_loader = FileSystemLoader(searchpath=bundle_dir)
+            l_env = Environment(
+                loader=l_loader,
+                undefined=StrictUndefined,
+            )
+            template = l_env.get_template("requirements_coverage/requirements_coverage.jinja.html")
+        else:   
+            template = RequirementsCoverageHTMLGenerator.env.get_template(
+                "requirements_coverage/requirements_coverage.jinja.html"
+            )
 
         markup_renderer = MarkupRenderer.create(
             "RST",

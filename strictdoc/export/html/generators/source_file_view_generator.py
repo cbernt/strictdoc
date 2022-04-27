@@ -1,4 +1,6 @@
-from jinja2 import Environment, PackageLoader, StrictUndefined
+import os
+import sys
+from jinja2 import Environment, PackageLoader,FileSystemLoader, StrictUndefined
 from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
 from pygments.lexers.c_cpp import CppLexer, CLexer
@@ -26,9 +28,25 @@ class SourceFileViewHTMLGenerator:
         output = ""
 
         document_type = DocumentType.document()
-        template = SourceFileViewHTMLGenerator.env.get_template(
-            "source_file_view/source_file_view.jinja.html"
-        )
+
+        if getattr(sys, 'frozen', False):
+             # we are running in a bundle
+            exe_dir = sys._MEIPASS
+            
+            bundle_dir = os.path.join(exe_dir,"strictdoc","strictdoc","export","html","templates")
+            print("bundledir:" + bundle_dir)
+            l_loader = FileSystemLoader(searchpath=bundle_dir)
+            l_env = Environment(
+                loader=l_loader,
+                undefined=StrictUndefined,
+            )
+            template = l_env.get_template(
+                "source_file_view/source_file_view.jinja.html"
+                )
+        else:        
+            template = SourceFileViewHTMLGenerator.env.get_template(
+                "source_file_view/source_file_view.jinja.html"
+            )
 
         with open(source_file.full_path, encoding="utf-8") as opened_file:
             source_file_lines = opened_file.readlines()
